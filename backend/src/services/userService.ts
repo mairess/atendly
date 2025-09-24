@@ -6,14 +6,18 @@ import { ILogin } from '../interfaces/ILogin';
 import { IToken } from '../interfaces/IToken';
 import jwt from '../utils/jwt';
 import { IMe } from '../interfaces/IMe';
+import { registerSchema, loginSchema } from '../utils/userValidator';
 
 
 async function register(userData: Omit<IUser, 'id'>): Promise<ServiceResponse<ServiceMessage | IUser>> {
-  const { name, email, password } = userData;
+  const parsed = registerSchema.safeParse(userData);
 
-  if (!name || !email || !password) {
-    return { status: 'BAD_REQUEST', data: { message: 'All fields are required!' } };
+  if (!parsed.success) {
+    const message = parsed.error.issues[0]!.message;
+    return { status: 'BAD_REQUEST', data: { message } };
   }
+
+  const { name, email, password } = parsed.data;;
 
   try {
     const userExists = await userModel.findByEmail(email);
@@ -35,9 +39,18 @@ async function register(userData: Omit<IUser, 'id'>): Promise<ServiceResponse<Se
 }
 
 async function login(loginData: ILogin): Promise<ServiceResponse<ServiceMessage | IToken>> {
-  const user = await userModel.findByEmail(loginData.email);
+  const parsed = loginSchema.safeParse(loginData);
 
-  if (!user || !bcrypt.compareSync(loginData.password, user.password!)) {
+  if (!parsed.success) {
+    const message = parsed.error.issues[0]!.message;
+    return { status: 'BAD_REQUEST', data: { message } };
+  }
+
+  const { email, password } = parsed.data;
+
+  const user = await userModel.findByEmail(email);
+
+  if (!user || !bcrypt.compareSync(password, user.password!)) {
     return { status: 'UNAUTHORIZED', data: { message: 'Invalid email or password!' } };
   }
 
