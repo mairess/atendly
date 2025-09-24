@@ -12,7 +12,13 @@ const login = async (req: Request, res: Response) => {
   return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
 };
 
+const profile = async (_req: Request, res: Response) => {
+  const serviceResponse = await userService.profile(res.locals.user);
+  return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
+};
+
 export default {
   register,
-  login
+  login,
+  profile
 };

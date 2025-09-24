@@ -2,6 +2,8 @@ import userController from './controllers/userController';
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import { authMiddleware } from './middleware/auth';
+
 dotenv.config();
 
 const app = express();
@@ -10,7 +12,7 @@ app.use(express.json());
 
 app.post('/api/register', userController.register);
 app.post('/api/login',  userController.login);
-app.get('/api/profile',  (_req, res) => { res.json('profile!');});
+app.get('/api/profile', authMiddleware, userController.profile);
 
 const PORT = process.env.PORT || 3001;
 
