@@ -7,7 +7,7 @@
    Before running the containers, create a `.env` file in the root directory of the project with the necessary environment variables. Example:
 
    ```env
-   DB_HOST=localhost
+   DB_HOST=db
    DB_PORT=5432
    DB_USER=user
    DB_PASSWORD=password
