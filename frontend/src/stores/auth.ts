@@ -19,7 +19,7 @@ export const useAuthStore = defineStore('auth', {
 
   actions: {
     async register(name: string, email: string, password: string) {
-      await api.post('/register', { name, email, password });
+      await api.post<User>('/register', { name, email, password });
     },
 
     async login(email: string, password: string) {
@@ -30,7 +30,7 @@ export const useAuthStore = defineStore('auth', {
     },
     
     async fetchProfile() {
-      this.user = await api.get('/profile');
+      this.user = await api.get<User>('/profile');
     },
 
     logout() {
