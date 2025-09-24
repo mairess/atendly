@@ -1,15 +1,3 @@
-<template>
-  <div>
-    <h2>Login</h2>
-    <form @submit.prevent="doLogin">
-      <input v-model="email" placeholder="Email" />
-      <input v-model="password" type="password" placeholder="Password" />
-      <button type="submit">Login</button>
-    </form>
-    <p v-if="error">{{ error }}</p>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -36,3 +24,15 @@ const doLogin = async () => {
   }
 }
 </script>
+
+<template>
+  <div>
+    <h2>Login</h2>
+    <form @submit.prevent="doLogin">
+      <input v-model="email" placeholder="Email" />
+      <input v-model="password" type="password" placeholder="Password" />
+      <button type="submit">Login</button>
+    </form>
+    <p v-if="error">{{ error }}</p>
+  </div>
+</template>

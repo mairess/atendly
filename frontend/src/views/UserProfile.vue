@@ -1,17 +1,3 @@
-<template>
-  <div>
-    <h2>Perfil</h2>
-    <div v-if="user">
-      <p><strong>Nome:</strong> {{ user.name }}</p>
-      <p><strong>Email:</strong> {{ user.email }}</p>
-      <button @click="logout">Logout</button>
-    </div>
-    <div v-else>
-      <p>Carregando...</p>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { useAuthStore } from '../stores/auth';
@@ -37,3 +23,18 @@ function logout() {
 
 const user = auth.user;
 </script>
+
+
+<template>
+  <div>
+    <h2>Perfil</h2>
+    <div v-if="user">
+      <p><strong>Nome:</strong> {{ user.name }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <button @click="logout">Logout</button>
+    </div>
+    <div v-else>
+      <p>Carregando...</p>
+    </div>
+  </div>
+</template>
