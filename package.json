@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"cd frontend && npm run dev\" \"cd backend && npm run dev\"",
-    "install:app": "concurrently \"cd frontend && npm i\" \"cd backend && npm i\""
+    "install:app": "concurrently npm i \"cd frontend && npm i\" \"cd backend && npm i\""
   },
   "keywords": [],
   "author": "Maires Souza",
