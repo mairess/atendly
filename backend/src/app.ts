@@ -1,11 +1,14 @@
+import userController from './controllers/userController';
 import express from 'express';
 import cors from 'cors';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post('/api/register', (_req, res) => { res.json('here!');});
+app.post('/api/register', userController.register);
 app.post('/api/login',  (_req, res) => { res.json('login!');});
 app.get('/api/profile',  (_req, res) => { res.json('profile!');});
 

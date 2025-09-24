@@ -32,7 +32,8 @@ User.init(
   },
   {
     tableName: 'users',
-    sequelize
+    sequelize,
+    timestamps: false
   }
 );
 
