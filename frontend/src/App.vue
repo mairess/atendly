@@ -14,18 +14,6 @@ const route = useRoute()
       <div class="text-xl font-bold">Atendly</div>
       <div class="space-x-4">
         <router-link 
-          to="/register" 
-          class="px-3 py-2 transition-colors rounded-md hover:bg-indigo-500"
-        >
-          Register
-        </router-link>
-        <router-link 
-          to="/login" 
-          class="px-3 py-2 transition-colors rounded-md hover:bg-indigo-500"
-        >
-          Login
-        </router-link>
-        <router-link 
           to="/profile" 
           class="px-3 py-2 transition-colors rounded-md hover:bg-indigo-500"
         >

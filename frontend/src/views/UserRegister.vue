@@ -72,7 +72,7 @@ const doRegister = async () => {
       </form>
 
       <div class="text-sm text-center text-gray-500">
-        <p>Already have an account? <a href="#" class="text-indigo-600 hover:text-indigo-800">Login</a></p>
+        <p>Already have an account? <a href="/login" class="text-indigo-600 hover:text-indigo-800">Login</a></p>
       </div>
     </div>
   </div>

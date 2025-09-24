@@ -62,7 +62,7 @@ const doLogin = async () => {
       </form>
 
       <div class="text-sm text-center text-gray-500">
-        <p>Don't have an account? <a href="#" class="text-indigo-600 hover:text-indigo-800">Sign up</a></p>
+        <p>Don't have an account? <a href="/register" class="text-indigo-600 hover:text-indigo-800">Sign up</a></p>
       </div>
     </div>
   </div>
