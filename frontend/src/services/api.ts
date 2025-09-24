@@ -2,14 +2,11 @@ const BASE_URL = 'http://localhost:3001/api';
 
 async function request<T>(url: string, options: RequestInit = {}): Promise<T> {
   const token = localStorage.getItem('token');
-
-  const headers: HeadersInit = {
-    'Content-Type': 'application/json',
-    ...options.headers,
-  };
+  const headers = new Headers(options.headers);
+  headers.set('Content-Type', 'application/json');
 
   if (token) {
-    (headers as Record<string, string>)['Authorization'] = `Bearer ${token}`;
+    headers.set('Authorization', `Bearer ${token}`);
   }  
 
   const response = await fetch(`${BASE_URL}${url}`, {
@@ -29,7 +26,4 @@ export const api = {
   get: <T>(url: string) => request<T>(url, { method: 'GET' }),
   post: <T>(url: string, body: unknown) =>
     request<T>(url, { method: 'POST', body: JSON.stringify(body) }),
-  put: <T>(url: string, body: unknown) =>
-    request<T>(url, { method: 'PUT', body: JSON.stringify(body) }),
-  delete: <T>(url: string) => request<T>(url, { method: 'DELETE' }),
 };

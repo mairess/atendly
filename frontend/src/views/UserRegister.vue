@@ -1,16 +1,3 @@
-<template>
-  <div>
-    <h2>Register</h2>
-    <form @submit.prevent="doRegister">
-      <input v-model="name" placeholder="Name" />
-      <input v-model="email" placeholder="Email" />
-      <input v-model="password" type="password" placeholder="Password" />
-      <button type="submit">Register</button>
-    </form>
-    <p v-if="error">{{ error }}</p>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -38,3 +25,16 @@ const doRegister = async () => {
   }
 }
 </script>
+
+<template>
+  <div>
+    <h2>Register</h2>
+    <form @submit.prevent="doRegister">
+      <input v-model="name" placeholder="Name" />
+      <input v-model="email" placeholder="Email" />
+      <input v-model="password" type="password" placeholder="Password" />
+      <button type="submit">Register</button>
+    </form>
+    <p v-if="error">{{ error }}</p>
+  </div>
+</template>

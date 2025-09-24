@@ -5,9 +5,24 @@ import UserProfile from '../views/UserProfile.vue';
 import { useAuthStore } from '../stores/auth';
 
 const routes = [
-  { path: '/register', name: 'Register', component: UserRegister },
-  { path: '/login', name: 'Login', component: UserLogin },
-  { path: '/profile', name: 'Profile', component: UserProfile, meta: { requiresAuth: true } },
+  { 
+    path: '/register', 
+    name: 'Register', 
+    component: UserRegister 
+  },
+  { path: '/login',
+    name: 'Login',
+    component: UserLogin
+  },
+  { path: '/profile',
+    name: 'Profile',
+    component: UserProfile,
+    meta: { requiresAuth: true }
+  },
+  { 
+    path: '/',
+    redirect: '/login'
+  }
 ];
 
 const router = createRouter({
