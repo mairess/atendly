@@ -2,6 +2,9 @@ import { IUser } from '../interfaces/IUser';
 import { ServiceMessage, ServiceResponse } from '../utils/ServiceResponse';
 import userModel from '../models/userModel';
 import bcrypt from 'bcrypt';
+import { ILogin } from '../interfaces/ILogin';
+import { IToken } from '../interfaces/IToken';
+import jwt from '../utils/jwt';
 
 
 async function register(userData: Omit<IUser, 'id'>): Promise<ServiceResponse<ServiceMessage | IUser>> {
@@ -30,6 +33,19 @@ async function register(userData: Omit<IUser, 'id'>): Promise<ServiceResponse<Se
   } 
 }
 
+async function login(loginData: ILogin): Promise<ServiceResponse<ServiceMessage | IToken>> {
+  const user = await userModel.findByEmail(loginData.email);
+
+  if (!user || !bcrypt.compareSync(loginData.password, user.password!)) {
+    return { status: 'UNAUTHORIZED', data: { message: 'Invalid email or password!' } };
+  }
+
+  const token = jwt.sign({ email: user.email });
+  return { status: 'SUCCESSFUL', data: { token } };
+    
+};
+
 export default {
-  register
+  register,
+  login
 };

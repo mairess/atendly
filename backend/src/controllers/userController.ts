@@ -5,9 +5,14 @@ import userService from '../services/userService';
 const register = async (req: Request, res: Response) => {
   const serviceResponse = await userService.register(req.body);
   return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
+};
 
+const login = async (req: Request, res: Response) => {
+  const serviceResponse = await userService.login(req.body);
+  return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
 };
 
 export default {
-  register
+  register,
+  login
 };

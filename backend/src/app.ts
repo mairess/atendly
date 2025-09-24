@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/api/register', userController.register);
-app.post('/api/login',  (_req, res) => { res.json('login!');});
+app.post('/api/login',  userController.login);
 app.get('/api/profile',  (_req, res) => { res.json('profile!');});
 
 const PORT = process.env.PORT || 3001;
