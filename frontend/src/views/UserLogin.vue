@@ -27,7 +27,7 @@ const doLogin = async () => {
 
 <template>
   <div>
-    <h2>Login</h2>
+    <h2 class="text-sml">Login</h2>
     <form @submit.prevent="doLogin">
       <input v-model="email" placeholder="Email" />
       <input v-model="password" type="password" placeholder="Password" />
