@@ -26,15 +26,29 @@ const user = auth.user;
 
 
 <template>
-  <div>
-    <h2>Perfil</h2>
-    <div v-if="user">
-      <p><strong>Nome:</strong> {{ user.name }}</p>
-      <p><strong>Email:</strong> {{ user.email }}</p>
-      <button @click="logout">Logout</button>
-    </div>
-    <div v-else>
-      <p>Carregando...</p>
+  <div class="flex items-center justify-center min-h-screen bg-gray-50">
+    <div class="w-full max-w-md p-8 space-y-6 bg-white shadow-lg rounded-xl">
+      <h2 class="text-3xl font-semibold text-center text-gray-700">Perfil</h2>
+
+      <div v-if="user" class="space-y-4">
+        <div class="space-y-2">
+          <p class="text-lg"><strong class="font-semibold">Nome:</strong> {{ user.name }}</p>
+          <p class="text-lg"><strong class="font-semibold">Email:</strong> {{ user.email }}</p>
+        </div>
+
+        <div class="text-center">
+          <button 
+            @click="logout" 
+            class="w-full px-4 py-2 font-semibold text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+
+      <div v-else class="text-center text-gray-500">
+        <p>Carregando...</p>
+      </div>
     </div>
   </div>
 </template>
