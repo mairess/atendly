@@ -8,6 +8,7 @@ const routes = [
   { path: '/register', name: 'Register', component: UserRegister },
   { path: '/login', name: 'Login', component: UserLogin },
   { path: '/profile', name: 'Profile', component: UserProfile, meta: { requiresAuth: true } },
+  { path: '/', redirect: '/login' }
 ];
 
 const router = createRouter({
