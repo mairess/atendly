@@ -1,0 +1,29 @@
+services:
+
+  backend:
+    build: backend
+    container_name: atendly_backend
+    ports:
+      - 3001:3001
+    command: run dev
+    volumes:
+      - ./backend/src:/app/src
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: mysql:8
+    container_name: atendly_database
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: atendly_db
+    restart: 'unless-stopped'
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 7s
+      retries: 5

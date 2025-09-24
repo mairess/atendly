@@ -1,0 +1,14 @@
+{
+  "name": "atendly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cd ./backend && npm run dev",
+    "lint": "cd ./backend && npm run lint"
+  },
+  "keywords": [],
+  "author": "Maires Souza",
+  "license": "ISC",
+  "devDependencies": {}
+}
