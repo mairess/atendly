@@ -5,7 +5,7 @@
       <input v-model="name" placeholder="Name" />
       <input v-model="email" placeholder="Email" />
       <input v-model="password" type="password" placeholder="Password" />
-      <button class="bg-blue-500 text-white px-4 py-2 rounded" type="submit">Register</button>
+      <button type="submit">Register</button>
     </form>
     <p v-if="error">{{ error }}</p>
   </div>
