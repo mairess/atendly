@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import UserRegister from '../views/UserRegister.vue'
+import UserLogin from '../views/UserLogin.vue';
+import UserProfile from '../views/UserProfile.vue';
 import { useAuthStore } from '../stores/auth';
-import UserLogin from '../views/UserLogin.vue'
 
 const routes = [
   { path: '/register', name: 'Register', component: UserRegister },
   { path: '/login', name: 'Login', component: UserLogin },
+  { path: '/profile', name: 'Profile', component: UserProfile, meta: { requiresAuth: true } },
 ];
 
 const router = createRouter({
