@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --loader ts-node/esm src/app.ts",
-    "predev": "npx sequelize-cli db:migrate",
+    "predev": "npm run build && npx sequelize-cli db:migrate",
     "lint": "eslint src --ext .ts",
     "build": "tsc",
     "migrate:run": "npm run build && npm run migrate"
