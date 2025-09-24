@@ -4,11 +4,12 @@
   "description": "Atendly challenge",
   "main": "index.js",
   "scripts": {
-    "dev": "cd ./backend && npm run dev",
-    "lint": "cd ./backend && npm run lint"
+    "dev": "concurrently \"cd frontend && npm run dev\" \"cd backend && npm run dev\""
   },
   "keywords": [],
   "author": "Maires Souza",
   "license": "ISC",
-  "devDependencies": {}
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
 }
